@@ -22,9 +22,9 @@ const Main = () => {
                 }
             }).map((val,key) => {
                 return(
-                <div className="employee" key={key} >
-                    <p>{val.first_name}</p> <p>{val.last_name}</p> <p>{val.email}</p> <p>{val.employee_id}</p>
-                </div> 
+                <div key={key} className="employee">
+                    <p>{val.first_name}</p> <p>{val.last_name} </p> <p>{val.email}</p> <p>{val.employee_id}</p>
+                </div>
                 )
             })}
         </div>
