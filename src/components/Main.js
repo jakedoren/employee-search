@@ -3,17 +3,25 @@ import employeedata from '../employee.json'
 import './main.css'
 
 const Main = () => {
-    const [searchInput, setSearchInput] = useState("")
+    // const [searchInput, setSearchInput] = useState("")
     const [filteredArray, setFilteredArray] = useState(employeedata)
     
-
-
+    function searchName(name) {
+        setFilteredArray(employeedata.filter((val) => {
+            if(name === "") {
+                return (
+                    val
+                )
+            } else if(val.first_name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {
+                return val
+            }
+        }))
+    }
     
-
     return (
         <div className="main">
-            <div>{filteredArray.length}</div>
-            <input onChange={(e) => setSearchInput(e.target.value)} placeholder="Search..."/>
+            <input onChange={(e) => searchName(e.target.value)} placeholder="Search..."/>
+            <p>{filteredArray.length} results</p>
             <div className="employee-head-wrapper">
                 <div className="employee-head">
                 <p>First Name</p>
@@ -22,17 +30,8 @@ const Main = () => {
                 <p>Employee ID</p>
             </div>
             </div>
-            
-            { setFilteredArray(employeedata.filter((val) => {
-                if(searchInput === "") {
-                    return (
-                        val
-                    )
-                } else if(val.first_name.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase())) {
-                    return val
-                }
-            }))
-            .map((val,key) => {
+
+            {filteredArray.map((val,key) => {
                 return(
                     <div className="employee-wrapper">
                         <div key={key} className="employee">
@@ -40,8 +39,7 @@ const Main = () => {
                         </div>
                     </div>
                 )
-            })
-            }
+            })}
         </div>
     )
 }
