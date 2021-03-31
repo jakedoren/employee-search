@@ -2,14 +2,14 @@
   width: 100vw;
   height: 80px;
   /* margin-bottom: 80px; */
-  background-color: black;
+  background-color: #1db954;
   display: flex;
 }
 
 .nav-container {
   width: 90vw;
   margin: 0 auto;
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   justify-content: center;
   align-items: center;
